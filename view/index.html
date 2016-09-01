@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../angular.min.js"></script>
+    <script src="../angular-route.js"></script>
+    <script src="../roultes/app.js"></script>
+    <script src="https://cdn1.lncld.net/static/js/av-min-1.2.1.js"></script>
+
+
+    <script src="../controller/admin.js"></script>
+    <script src="../controller/getApp.js"></script>
+    <script src="../controller/login.js"></script>
+    <script src="../directive/directive.js"></script>
+    <script src="../server.js"></script>
+
+</head>
+<body ng-app="ngRouteExample" ng-controller="admin">
+<a href="#/login">login</a>
+<a href="#/getApp">getApp</a>
+
+<div ng-view></div>
+</body>
+</html>
