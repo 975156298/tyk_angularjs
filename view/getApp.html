@@ -1,4 +1,6 @@
 <button ng-click="getApp()">获取数据</button>
-<button ng-click="updateApp()">更新数据</button>
-<h1 ng-repeat="x in title">{{x}}</h1>
+<p ng-repeat="x in title">{{x}}
+    <button ng-click="updateApp(x.objectId,'success')">确认通过</button>
+    <button ng-click="updateApp(x.objectId,'resubmitted')">不通过</button>
+</p>
 <pagination num-pages="pages" curr-page="page" on-select-page="selectPage(page)"></pagination>

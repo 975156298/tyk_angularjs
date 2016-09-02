@@ -4,7 +4,6 @@
 app.controller('getApp', function ($scope,GetApp,UpdateApp) {
     $scope.getApp = function(){
         GetApp(function(data){
-            sessionStorage.setItem('shuju',JSON.stringify(data));
             var rows = 2;
             var shuju = data;
             $scope.pages = Math.ceil(shuju.length/rows);
@@ -12,6 +11,7 @@ app.controller('getApp', function ($scope,GetApp,UpdateApp) {
             if($scope.page==1){
                 var getApp=[];
                 for(var i=0;i<rows;i++){
+                    if(shuju.length<i+1) break;
                     getApp.push(shuju[i]);
                 }
                 $scope.title = getApp;
@@ -19,6 +19,7 @@ app.controller('getApp', function ($scope,GetApp,UpdateApp) {
             $scope.selectPage = function(page){
                 var getApp=[];
                 for(var i=0;i<rows;i++){
+                    if(shuju.length<i) break;
                     getApp.push(shuju[(page-1)*rows+i]);
                 }
                 $scope.title = getApp;
@@ -26,8 +27,7 @@ app.controller('getApp', function ($scope,GetApp,UpdateApp) {
             };
         });
     };
-    $scope.updateApp = function(){
-        var shuju = JSON.parse(sessionStorage.getItem('shuju'));
-        UpdateApp(shuju[0].objectId);
+    $scope.updateApp = function(id,status){
+        UpdateApp(id,status);
     }
 });
